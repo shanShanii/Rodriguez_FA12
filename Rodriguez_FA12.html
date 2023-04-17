@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+		#border {
+			margin-top: 5%;
+		}
+		table,
+		td {
+			border: 1px solid black;
+			width: 450px;
+			height: 50px;
+			text-align: center;
+		}
+	</style>
+	</head>
+	
+	<body>
+		<div id="border">
+			<p>[Enter a number between 2 and 10]</p>
+			<input type=number id=column /> by
+			<input type=number id=row /></br></br>
+			<button onclick="mulTable()">Click here when ready!</button>
+			</br></br>
+		</div>
+		
+		<script>
+			function mulTable(){
+				let num1 = parseInt(document.getElementById("column").value);
+				let num2 = parseInt(document.getElementById("row").value);
+				
+				var table = document.createElement("table");
+				let thead = document.createElement('thead');
+				let tbody = document.createElement('tbody');
+				
+				table.appendChild(thead);
+				table.appendChild(tbody);
+				document.getElementById('border').appendChild(table);
+				
+				if (num1 >= 2 && num2 <= 10) {
+					for (let i = 1; i <= num1; i++) {
+						var a = document.createElement("TR");	
+						a.setAttribute("id", "myTr");
+						table.appendChild(a);
+						for (let j = 1; j <= num2; j++) {
+							var b = document.createElement("TD");
+							b.innerHTML = i * j
+							a.appendChild(b);
+						}
+						tbody.appendChild(a);
+					}
+				} else {
+					alert("Please enter numbers between 2 and 10");
+				}
+			}
+		</script>
+	</body>
+</html>
